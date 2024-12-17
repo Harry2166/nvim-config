@@ -4,7 +4,27 @@ return {
     -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
   },
-
+{
+    "jellydn/quick-code-runner.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    opts = {
+      debug = true,
+    },
+    cmd = { "QuickCodeRunner", "QuickCodePad" },
+    keys = {
+      {
+        "<leader>cr",
+        ":QuickCodeRunner<CR>",
+        desc = "Quick Code Runner",
+        mode = "v",
+      },
+      {
+        "<leader>cp",
+        ":QuickCodePad<CR>",
+        desc = "Quick Code Pad",
+      },
+    },
+  },
   {
     "lewis6991/gitsigns.nvim",
     config = function()
