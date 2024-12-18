@@ -49,7 +49,51 @@ return {
   opts = {
     -- your configuration comes here
     -- or leave it empty to use the default settings
-  }
+  },
+},
+  {
+    "smoka7/hop.nvim",
+    opts = {
+      multi_windows = true,
+      keys = "etovxqpdygfblzhckisuran",
+      uppercase_labels = true,
+    },
+    keys = {
+      {
+        "<leader>fj",
+        function()
+          require("hop").hint_words()
+        end,
+        mode = {"n", "x", "o"}
+      }
+    }
+  },  {
+  'mfussenegger/nvim-dap',
+  dependencies = {
+    "rcarriga/nvim-dap-ui",
+    "mfussenegger/nvim-dap-python"
+  },
+  config = function()
+  local dap = require("dap")
+  local dapui = require("dapui")
+  local dap_python = require("dap-python")
+  dap_python.setup("python")
+  dap_python.test_runner = 'pytest'
+  dap.listeners.before.attach.dapui_config = function()
+    dapui.open()
+  end
+  dap.listeners.before.launch.dapui_config = function()
+    dapui.open()
+  end
+  dap.listeners.before.event_terminated.dapui_config = function()
+    dapui.close()
+  end
+  dap.listeners.before.event_exited.dapui_config = function()
+    dapui.close()
+  end
+      vim.keymap.set('n', '<leader>dt', dap.toggle_breakpoint, {})
+    vim.keymap.set('n', '<leader>dc', dap.continue, {})
+  end,
 }
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
