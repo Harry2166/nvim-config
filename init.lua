@@ -32,6 +32,18 @@ dofile(vim.g.base46_cache .. "statusline")
 require "options"
 require "nvchad.autocmds"
 
+-- require('code-runner').setup({
+--   -- in setup function
+--   filetype = {
+--     java = { "cd $dir &&", "javac $fileName &&", "java $fileNameWithoutExt" },
+--     python = "python3 -u",
+--     typescript = "deno run",
+--     rust = { "cd $dir &&",
+--       "rustc $fileName &&",
+--       "$dir/$fileNameWithoutExt"
+--     },
+-- }})
+--
 vim.schedule(function()
   require "mappings"
 end)
