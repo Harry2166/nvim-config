@@ -33,6 +33,20 @@ return {
     end,
   },
 { "nvim-neotest/nvim-nio" },
+{'Pocco81/auto-save.nvim',
+    keys = {
+      {
+        "<leader>as",
+        ":ASToggle<CR>",
+      }
+    },
+    config = function ()
+      require("auto-save").setup({
+        enabled = true
+      })
+    end
+ },
+
 {
   "CRAG666/betterTerm.nvim",
   opts = {
