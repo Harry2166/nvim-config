@@ -4,7 +4,23 @@ return {
     -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
   },
-{
+  {
+    "anurag3301/nvim-platformio.lua",
+    dependencies = {
+        { "akinsho/nvim-toggleterm.lua" },
+        { "nvim-telescope/telescope.nvim" },
+        { "nvim-lua/plenary.nvim" },
+    },
+  },cmd = {
+    "Pioinit",
+    "Piorun",
+    "Piocmd",
+    "Piolib",
+    "Piomon",
+    "Piodebug",
+    "Piodb",
+  },
+  {
     "jellydn/quick-code-runner.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
     opts = {
