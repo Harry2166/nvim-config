@@ -42,6 +42,22 @@ return {
     },
   },
   {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile"
+    },
+    dependecies = {
+      "nvim-lua/plenary.nvim",
+    },
+    keys = {
+      {"<leader>lg", "<cmd>LazyGit<cr>", desc="Open lazy git"},
+    }
+  },
+  {
     "lewis6991/gitsigns.nvim",
     config = function()
       require("gitsigns").setup()
