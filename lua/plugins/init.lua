@@ -42,6 +42,11 @@ return {
     },
   },
   {
+    'mrcjkb/rustaceanvim',
+    version = '^6', -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
+  {
     "kdheepak/lazygit.nvim",
     cmd = {
       "LazyGit",
@@ -50,7 +55,7 @@ return {
       "LazyGitFilter",
       "LazyGitFilterCurrentFile"
     },
-    dependecies = {
+    dependencies = {
       "nvim-lua/plenary.nvim",
     },
     keys = {
@@ -59,100 +64,43 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim",
+    enabled=false,
     config = function()
       require("gitsigns").setup()
-      require("gitsigns").toggle_signs()
     end,
   },
-{ "nvim-neotest/nvim-nio" },
-{'Pocco81/auto-save.nvim',
-    keys = {
-      {
-        "<leader>as",
-        ":ASToggle<CR>",
-      }
-    },
-    config = function ()
-      require("auto-save").setup({
-        enabled = true
-      })
-    end
- },
-
-{
-  "CRAG666/betterTerm.nvim",
-  opts = {
-    position = "bot",
-    size = 15,
-  },
-},
-{"CRAG666/code_runner.nvim",
-  dependencies = {"CRAG666/betterTerm.nvim"},
-  keys = {
-      {
-        "<leader>r",
-        ":RunCode<CR>",
+  { "nvim-neotest/nvim-nio" },
+  {'Pocco81/auto-save.nvim',
+      keys = {
+        {
+          "<leader>as",
+          ":ASToggle<CR>",
+        }
       },
-      {
-        "<leader>rf",
-        ":RunFile<CR>",
-      },
-    },
-  config = function ()
-    require('code_runner').setup({
-  filetype = {
-    java = {
-      "cd $dir &&",
-      "javac $fileName &&",
-      "java $fileNameWithoutExt"
-    },
-    python = "python3 -u",
-    typescript = "deno run",
-    rust = {
-      "cd $dir &&",
-      "rustc $fileName &&",
-      "$dir/$fileNameWithoutExt"
-    },
-    c = function(...)
-      local c_base = {
-        "cd $dir &&",
-        "gcc $fileName -o",
-        "/tmp/$fileNameWithoutExt",
-      }
-      local c_exec = {
-        "&& /tmp/$fileNameWithoutExt &&",
-        "rm /tmp/$fileNameWithoutExt",
-      }
-      vim.ui.input({ prompt = "Add more args:" }, function(input)
-        c_base[4] = input
-        vim.print(vim.tbl_extend("force", c_base, c_exec))
-        require("code_runner.commands").run_from_fn(vim.list_extend(c_base, c_exec))
-      end)
-    end,
-  },
-})
-  end
-
-},
-  -- These are some examples, uncomment them if you want to see them work!
+      config = function ()
+        require("auto-save").setup({
+          enabled = true
+        })
+      end
+   },
   {
     "neovim/nvim-lspconfig",
     config = function()
       require "configs.lspconfig"
     end,
   },
-{
-  "folke/which-key.nvim",
-  event = "VeryLazy",
-  init = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 300
-  end,
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+    },
   },
-},
   {
     "smoka7/hop.nvim",
     opts = {
@@ -170,13 +118,13 @@ return {
       }
     }
   },
- {
-  'mfussenegger/nvim-dap',
-  dependencies = {
-    "rcarriga/nvim-dap-ui",
-    "mfussenegger/nvim-dap-python"
-  },
-  keys = {
+   {
+    'mfussenegger/nvim-dap',
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      "mfussenegger/nvim-dap-python"
+    },
+    keys = {
     {
         "<leader>dt",
         function()
