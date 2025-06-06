@@ -70,7 +70,8 @@ return {
     end,
   },
   { "nvim-neotest/nvim-nio" },
-  {'Pocco81/auto-save.nvim',
+ {'Pocco81/auto-save.nvim',
+      lazy=false,
       keys = {
         {
           "<leader>as",
