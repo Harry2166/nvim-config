@@ -40,13 +40,13 @@ return {
         desc = "Quick Code Pad",
       },
     },
-  },
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^6', -- Recommended
-    lazy = false, -- This plugin is already lazy
-  },
-  {
+    },
+    {
+      'mrcjkb/rustaceanvim',
+      version = '^6', -- Recommended
+      lazy = false, -- This plugin is already lazy
+    },
+    {
     "kdheepak/lazygit.nvim",
     cmd = {
       "LazyGit",
@@ -61,29 +61,45 @@ return {
     keys = {
       {"<leader>lg", "<cmd>LazyGit<cr>", desc="Open lazy git"},
     }
-  },
-  {
+    },
+    {
     "lewis6991/gitsigns.nvim",
     enabled=false,
     config = function()
       require("gitsigns").setup()
     end,
   },
-  { "nvim-neotest/nvim-nio" },
- {'Pocco81/auto-save.nvim',
-      lazy=false,
-      keys = {
-        {
-          "<leader>as",
-          ":ASToggle<CR>",
-        }
+  {
+    "nvim-neotest/nvim-nio"
+  },
+  {
+      'brianhuster/live-preview.nvim',
+      dependencies = {
+          -- You can choose one of the following pickers
+          'nvim-telescope/telescope.nvim',
+          'ibhagwan/fzf-lua',
+          'echasnovski/mini.pick',
       },
-      config = function ()
-        require("auto-save").setup({
-          enabled = true
-        })
-      end
-   },
+      keys = {
+        {"<leader>lp",":LivePreview start", desc="Live Preview for certain files"}
+      },
+      lazy=false,
+  },
+  {
+    'Pocco81/auto-save.nvim',
+    lazy=false,
+    keys = {
+      {
+        "<leader>as",
+        ":ASToggle<CR>",
+      }
+    },
+    config = function ()
+      require("auto-save").setup({
+        enabled = true
+    })
+    end
+  },
   {
     "neovim/nvim-lspconfig",
     config = function()
