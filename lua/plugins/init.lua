@@ -5,6 +5,15 @@ return {
     opts = require "configs.conform",
   },
   {
+    "L3MON4D3/LuaSnip",
+    dependencies = {
+      "rafamadriz/friendly-snippets", -- Snippet collection (includes React)
+    },
+    config = function()
+      require("luasnip.loaders.from_vscode").lazy_load() -- Loads VSCode snippets
+    end
+  },
+  {
     "anurag3301/nvim-platformio.lua",
     dependencies = {
         { "akinsho/nvim-toggleterm.lua" },
