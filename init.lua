@@ -25,6 +25,12 @@ require("lazy").setup({
   { import = "plugins" },
 }, lazy_config)
 
+require("nvim-tree").setup({
+  view = {
+    side = "right",
+  },
+})
+
 require('platformio').setup({
     lsp = "clangd" --default: ccls, other option: clangd
                  -- If you pick clangd, it also creates compile_commands.json
